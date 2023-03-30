@@ -14,7 +14,7 @@ public class UserDao {
 	
 	@Transactional
 	public void saveUser(User user) {
-		System.out.println(user.getName()+ " " +user.getAge());
+//		System.out.println(user.getName()+ " " +user.getAge());
 		Transaction transaction=null;
 		System.out.println("jani na kemon ahci");
 		

@@ -8,7 +8,12 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.Entity.Demo;
+import com.Entity.Course;
+import com.Entity.Enrollment;
+import com.Entity.Student;
+import com.Entity.Teacher;
+import com.Entity.TeacherCourse;
+//import com.Entity.Demo;
 import com.Entity.User;
 
 public class Hibernate {
@@ -31,7 +36,7 @@ public class Hibernate {
 
 		    settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-		    settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+		    settings.put(Environment.HBM2DDL_AUTO, "update");
 //		    settings.put(Environment.USE_SECOND_LEVEL_CACHE,"true");
 		    settings.put(Environment.CACHE_REGION_FACTORY,"org.hibernate.cache.ehcache.EhCacheRegionFactory");
 		    System.out.println("dhaldhsld");
@@ -39,7 +44,15 @@ public class Hibernate {
 //		    settings.put(Environment.cache, settings)u
 		    configuration.setProperties(settings);
 		    configuration.addAnnotatedClass(User.class);
-		    configuration.addAnnotatedClass(Demo.class);
+		    configuration.addAnnotatedClass(Course.class);
+		    configuration.addAnnotatedClass(Teacher.class);
+		    configuration.addAnnotatedClass(Student.class);
+		    configuration.addAnnotatedClass(TeacherCourse.class);
+		    configuration.addAnnotatedClass(Enrollment.class);
+
+		    
+		    
+//		    configuration.addAnnotatedClass(Demo.class);
 
 		    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
