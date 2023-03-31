@@ -1,6 +1,8 @@
 package com.Servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,7 +17,6 @@ import com.Entity.User.UserType;
  * Servlet implementation class SignupServlet
  * 
  */
-
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,21 +33,23 @@ public class SignupServlet extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("kemon acho ");
+//		System.out.println("kemon acho ");
 		User user=new User();
-		
+//		
 		user.setUsername("Shanto");
 		user.setPassword("hlahd");
 		user.setUserType(UserType.STUDENT);
 		UserDao userDao=new UserDao();
 		userDao.saveUser(user);
-//		User user1=new User("13","Saiful",22);
-//		userDao.saveUser(user1);
+////		User user1=new User("13","Saiful",22);
+////		userDao.saveUser(user1);
 //		List<User>users=userDao.getUsers();
-		System.out.println("fuck all of you");
-
-//		users.forEach(x->System.out.println(x.getName()));
-		response.getWriter().append("<h1>Hello World</h1>").append(request.getContextPath());
+////		System.out.println("fuck all of you");
+    	System.out.println("i love you");
+		RequestDispatcher view=request.getRequestDispatcher("/pages/Signup.jsp");
+		view.forward(request, response);
+////		users.forEach(x->System.out.println(x.getName()));
+//		response.getWriter().append("<h1>Hello World</h1>").append(request.getContextPath());
 	}
 
 	/**

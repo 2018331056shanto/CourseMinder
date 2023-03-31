@@ -2,52 +2,58 @@ package com.Entity;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "course")
 public class Course {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int courseId;
-    
-    private String courseName;
+    @Column(name = "id")
+    private Long id;
 
-	public Course() {
-		super();
-		// TODO Auto-generated constructor stub
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+	public Long getId() {
+		return id;
 	}
 
-	public Course(int courseId, String courseName) {
-		super();
-		this.courseId = courseId;
-		this.courseName = courseName;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public int getCourseId() {
-		return courseId;
+	public String getName() {
+		return name;
 	}
 
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getCourseName() {
-		return courseName;
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(courseId, courseName);
+		return Objects.hash(id, name, teacher);
 	}
 
 	@Override
@@ -59,13 +65,28 @@ public class Course {
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
-		return courseId == other.courseId && Objects.equals(courseName, other.courseName);
+		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(teacher, other.teacher);
 	}
 
 	@Override
 	public String toString() {
-		return "Course [courseId=" + courseId + ", courseName=" + courseName + "]";
+		return "Course [id=" + id + ", name=" + name + ", teacher=" + teacher + "]";
+	}
+
+	public Course(Long id, String name, Teacher teacher) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.teacher = teacher;
+	}
+
+	public Course() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
     
     
+
+    // getters and setters
 }

@@ -9,10 +9,10 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import com.Entity.Course;
-import com.Entity.Enrollment;
+import com.Entity.Department;
+import com.Entity.Registration;
 import com.Entity.Student;
 import com.Entity.Teacher;
-import com.Entity.TeacherCourse;
 //import com.Entity.Demo;
 import com.Entity.User;
 
@@ -45,10 +45,10 @@ public class Hibernate {
 		    configuration.setProperties(settings);
 		    configuration.addAnnotatedClass(User.class);
 		    configuration.addAnnotatedClass(Course.class);
-		    configuration.addAnnotatedClass(Teacher.class);
+		    configuration.addAnnotatedClass(Department.class);
 		    configuration.addAnnotatedClass(Student.class);
-		    configuration.addAnnotatedClass(TeacherCourse.class);
-		    configuration.addAnnotatedClass(Enrollment.class);
+		    configuration.addAnnotatedClass(Teacher.class);
+		    configuration.addAnnotatedClass(Registration.class);
 
 		    
 		    
