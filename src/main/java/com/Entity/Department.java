@@ -14,18 +14,17 @@ import javax.persistence.Table;
 public class Department {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "name")
     private String name;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -54,7 +53,12 @@ public class Department {
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
-	public Department(Long id, String name) {
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + "]";
+	}
+
+	public Department(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,13 +68,6 @@ public class Department {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public String toString() {
-		return "Department [id=" + id + ", name=" + name + "]";
-	}
     
     
-
-    // getters and setters
 }

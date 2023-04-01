@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("how are you brother");
 		System.out.println(request.getContextPath()+"/signup");
+		
 		response.sendRedirect(request.getContextPath()+"/signup");
 //		doGet(request, response);
 	}

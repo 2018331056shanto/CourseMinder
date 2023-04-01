@@ -16,9 +16,8 @@ import javax.persistence.Table;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -27,11 +26,11 @@ public class Student {
     @JoinColumn(name = "department_id")
     private Department department;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -74,7 +73,7 @@ public class Student {
 		return "Student [id=" + id + ", name=" + name + ", department=" + department + "]";
 	}
 
-	public Student(Long id, String name, Department department) {
+	public Student(String id, String name, Department department) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,7 +85,7 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-    
+	
     // getters and setters
 }
 

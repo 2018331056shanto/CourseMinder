@@ -15,35 +15,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-	public enum UserType {
-	    STUDENT,
-	    TEACHER,
-	    ADMIN
-	}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @Column(name = "username")
+    @Column(name = "username",unique = true)
     private String username;
-    
-    @Column(name = "name")
-    private String name;
     
     @Column(name = "password")
     private String password;
+    @Column(name = "type")
+    private String type;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
-    private UserType userType;
 
-	public Long getId() {
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -55,6 +53,8 @@ public class User {
 		this.username = username;
 	}
 
+	
+
 	public String getPassword() {
 		return password;
 	}
@@ -63,27 +63,10 @@ public class User {
 		this.password = password;
 	}
 
-	public UserType getUserType() {
-		return userType;
-	}
-
-	public void setUserType(UserType userType) {
-		this.userType = userType;
-	}
 	
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, password, userType, username);
+		return Objects.hash(id, password, type, username);
 	}
 
 	@Override
@@ -95,33 +78,32 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(password, other.password) && userType == other.userType
-				&& Objects.equals(username, other.username);
+		return Objects.equals(id, other.id) && Objects.equals(password, other.password)
+				&& Objects.equals(type, other.type) && Objects.equals(username, other.username);
 	}
 	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", name=" + name + ", password=" + password + ", userType="
-				+ userType + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", type=" + type + "]";
 	}
 
-	public User(Long id, String username, String name, String password, UserType userType) {
+	public User(String id, String username, String password, String type) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.name = name;
 		this.password = password;
-		this.userType = userType;
+		this.type = type;
 	}
-
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
-    
 
-    // getters and setters
+
+	    
+    
 }
+
+	

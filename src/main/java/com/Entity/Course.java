@@ -16,22 +16,21 @@ import javax.persistence.Table;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @Column(name = "name")
+    @Column(name = "name",unique = true)
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -74,7 +73,7 @@ public class Course {
 		return "Course [id=" + id + ", name=" + name + ", teacher=" + teacher + "]";
 	}
 
-	public Course(Long id, String name, Teacher teacher) {
+	public Course(String id, String name, Teacher teacher) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -87,6 +86,4 @@ public class Course {
 	}
     
     
-
-    // getters and setters
 }

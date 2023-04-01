@@ -67,21 +67,21 @@
             </svg>
         </div>
         <h3 class="text-2xl  font-bold text-center">Create an Account</h3>
-        <form action="">
+        <form action="/Servlet-Project/signup" method="post">
             <div class="mt-4">
                 <div>
-                    <label class="block" for="Name">Name<label>
-                            <input type="text" placeholder="Name"
+                    <label  class="block" for="Name">Name<label>
+                            <input  name="name" type="text" placeholder="Name"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="mt-4">
                     <label class="block" for="email">Email<label>
-                            <input type="text" placeholder="Email"
+                            <input name="email" type="text" placeholder="Email"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                  <div class="mt-4">
                    <label for="dept" class="block">Department</label>
-<select id="dept" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<select name="department" id="dept" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
   <option selected>Choose a department</option>
   <option value="cse">Computer Science and Engineering</option>
   <option value="eee">Electrical and Electronics Engineering</option>
@@ -91,7 +91,7 @@
                 </div>
                  <div class="mt-4">
                    <label for="type" class="block">Create Account As</label>
-<select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<select name="type" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
   <option selected>Choose a type</option>
   <option value="student">Student</option>
   <option value="teacher">Teacher</option>
@@ -100,12 +100,12 @@
                 </div>
                 <div class="mt-4">
                     <label class="block">Password<label>
-                            <input type="password" placeholder="Password"
+                            <input name="password"type="password" placeholder="Password"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="mt-4">
                     <label class="block">Confirm Password<label>
-                            <input type="password" placeholder="Password"
+                            <input name="confpassword" type="password" placeholder="Password"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <span class="text-xs text-red-400">Password must be same!</span>

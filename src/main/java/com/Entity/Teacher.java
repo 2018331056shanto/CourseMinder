@@ -16,9 +16,8 @@ import javax.persistence.Table;
 public class Teacher {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id;
 
     @Column(name = "name")
     private String name;
@@ -26,12 +25,13 @@ public class Teacher {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
-
-	public Long getId() {
+    
+    
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -74,12 +74,14 @@ public class Teacher {
 		return "Teacher [id=" + id + ", name=" + name + ", department=" + department + "]";
 	}
 
-	public Teacher(Long id, String name, Department department) {
+	public Teacher(String id, String name, Department department) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.department = department;
 	}
+
+	
 
 	public Teacher() {
 		super();

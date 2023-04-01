@@ -13,32 +13,18 @@ import com.Utils.Hibernate;
 public class UserDao {
 	
 	@Transactional
-	public void saveUser(User user) {
-//		System.out.println(user.getName()+ " " +user.getAge());
+	public void saveUser(User user) throws Exception {
 		Transaction transaction=null;
-		System.out.println("jani na kemon ahci");
 		
 		try(Session session = Hibernate.getSessionFactory().openSession()) {
-//
 			transaction=session.beginTransaction();
 			
-			System.out.println("done");
 			session.save(user);
-			System.out.println("after save done");
 			transaction.commit();
-			System.out.println("after save commit");
 
 			
 		}
-		catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("it's in catch");
-			if(transaction!=null)
-			{
-				transaction.rollback();
-			}
-			e.printStackTrace();
-		}
+		
 		
 		
 	}
