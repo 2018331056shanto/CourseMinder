@@ -66,31 +66,52 @@
     </div>
   </div>
 </nav>
-
 <div class="w-full flex justify-center mt-10 tracking-widest font-mono font-semibold text-2xl">
 
-<div>List Of Courses You Are Assigned</div>
+<div>List Of Students in <span>${courseName }</span> </div>
 </div>
 
-<div class="container mx-auto px-20">
-
-<div class="flex flex-col w-full" style="cursor: auto;">
-
-  <div class="grid gap-2 grid-cols-4 cursor sm:grid-cols-4 my-2 w-auto">
-  <c:forEach var="item" items="${courses }">
-  <a href="/Servlet-Project/in/teacher/${item.getId()}">
-  
-    <div class="metric-card cursor bg-white text-2xl dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-     <div class="mt-3 curosr  flex justify-center items-center"><p class="cursor">${item.getName()}</p></div>
+<div class="metric-card bg-white text-2xl dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
+      Total Students
+      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;"> ${noOfStudents } </p>
     </div>
-    </a>
-      </c:forEach>
-    
-    
-  </div>
-  
+
+<div class="relative flex mt-10 overflow-x-auto justify-center shadow-md sm:rounded-lg">
+    <table class="w-4/5 text-sm  text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 text-lg py-3">
+                    Student Name
+                </th>
+                <th scope="col" class="px-6 text-lg py-3">
+                    Department
+                </th>
+                <th scope="col" class="px-6 text-lg py-3">
+                    Registration
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+           <c:forEach var="item" items="${students }">
+           
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-600 text-base whitespace-nowrap dark:text-white">
+					${item.getName()}
+                </th>
+                <td class="px-6 py-4 font-medium text-gray-600 text-base whitespace-nowrap dark:text-white">
+					${item.getDepartment().getName() }
+                </td>
+                <td class="px-6 py-4 font-medium text-gray-600 text-base whitespace-nowrap dark:text-white">
+                    ${ item.getId() } 
+                </td>
+               
+            </tr>
+ </c:forEach> 
+            
+           
+        </tbody>
+    </table>
 </div>
 
-</div>
 </body>
 </html>

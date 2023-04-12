@@ -13,6 +13,7 @@ import java.util.Map;
 import com.Dao.CourseDao;
 import com.Dao.DepartmentDao;
 import com.Dao.RegistrationDao;
+import com.Entity.Course;
 import com.Entity.Department;
 import com.Entity.Student;
 import com.Entity.Teacher;
@@ -41,7 +42,7 @@ public class CourseEnrollmentServlet extends HttpServlet {
 		
 		RegistrationDao registrationDao=new RegistrationDao();
 		CourseDao courseDao=new CourseDao();
-		DepartmentDao departmentDao=new DepartmentDao();
+//		DepartmentDao departmentDao=new DepartmentDao();
 		String[] url=request.getRequestURI().split("/");
 		
 		String id=url[url.length-1];
@@ -49,6 +50,7 @@ public class CourseEnrollmentServlet extends HttpServlet {
 		try {
 			
 			List<Student> students=registrationDao.getRegisterStudentsToACourse(id);
+			Course course=courseDao.getCourseById(id);
 			
 			Teacher teacher=courseDao.getCourseTeacher(id);
 		
@@ -56,7 +58,7 @@ public class CourseEnrollmentServlet extends HttpServlet {
 			request.setAttribute("students", students);
 			request.setAttribute("teacher", teacher.getName());
 			request.setAttribute("deptname", teacher.getDepartment().getName().toUpperCase());
-			
+			request.setAttribute("courseName",course.getName());
 			RequestDispatcher view=request.getRequestDispatcher("/pages/CourseEnrollMent.jsp");
 			view.forward(request, response);
 			

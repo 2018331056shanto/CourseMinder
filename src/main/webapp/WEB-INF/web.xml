@@ -118,4 +118,14 @@
     <servlet-name>AdminStudentServlet</servlet-name>
     <url-pattern>/in/admin/student</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TeacherStudentServlet</display-name>
+    <servlet-name>TeacherStudentServlet</servlet-name>
+    <servlet-class>com.Servlet.TeacherStudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherStudentServlet</servlet-name>
+    <url-pattern>/in/teacher/*</url-pattern>
+  </servlet-mapping>
 </web-app>

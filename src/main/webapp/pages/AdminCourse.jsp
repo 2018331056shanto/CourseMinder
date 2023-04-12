@@ -165,7 +165,13 @@
 <form action="/Servlet-Project/in/admin/course" method="post" id="input-container" class="w-full mb-10 items-center hidden justify-center flex">
   <div class="w-3/4 flex justify-between p-4 mt-8 bg-white border border-gray-200 rounded-lg shadow sm:p-2 dark:bg-gray-800 dark:border-gray-700">
     <div id="input-container px-6" class=" mt-4">
+    <div class="text-xl font-bold flex justify-center">Course Name</div>
   <input class="px-4 py-2 border rounded" name="course" type="text" placeholder="Enter Course Name">
+ 
+</div>
+  <div id="input-container px-6" class=" mt-4">
+    <div class="text-xl font-bold flex justify-center">Course ID</div>
+  <input class="px-4 py-2 border rounded" name="courseid" type="text" placeholder="Enter Course ID">
  
 </div>
  <button class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none" onclick="showInput1()">Add</button>

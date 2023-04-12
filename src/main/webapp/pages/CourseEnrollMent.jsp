@@ -98,7 +98,10 @@
   </div>
 </nav>
 
+<div class="w-full flex justify-center mt-10 tracking-widest font-mono font-semibold text-2xl">
 
+<div>Teachers and Students List in  <span>${courseName }</span> </div>
+</div>
 <div class="flex w-full justify-around mt-7">
 
 <div class="flex flex-wrap w-full ">

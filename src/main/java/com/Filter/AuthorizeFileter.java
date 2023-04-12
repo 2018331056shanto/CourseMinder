@@ -62,19 +62,27 @@ public class AuthorizeFileter extends HttpFilter implements Filter {
 		{
 			
 			User user=(User)session.getAttribute("loggedinuser");
-			System.out.println(url[3]);
-			if(user.getType().equals(url[3]))
-			{
+			
+			try {
+				if(user.getType().equals(url[3]))
+				{
+					chain.doFilter(request2, response2);
+
+				}
+				
+				else {
+				 
+					
+					response2.sendRedirect(request2.getContextPath()+"/login");
+
+				}
+			}
+			catch (Exception e) {
 				chain.doFilter(request2, response2);
 
+				// TODO: handle exception
 			}
 			
-			else {
-			 
-				
-				response2.sendRedirect(request2.getContextPath()+"/login");
-
-			}
 
 			
 		}

@@ -54,6 +54,23 @@ public class CourseDao {
 			
 		}
 	}
+	public Course getCourseById(String id) throws Exception
+	{
+		
+		Transaction transaction=null;
+		try(Session session=Hibernate.getSessionFactory().openSession())
+		{
+			
+			
+			transaction=session.beginTransaction();
+			Course course=(Course)session.createQuery("select c from Course c where c.id = :id").setParameter("id", id).uniqueResult();
+
+			transaction.commit();
+			return course; 
+			
+		}
+	}
+	
 	
 	public List<Course> getCourseByTeacher(String id) throws Exception{
 		
@@ -73,8 +90,9 @@ public class CourseDao {
 		}
 		
 	}
-public List<Course> getCourseNotMatchWithTeacher(String id) throws Exception{
+public List<Course> getCourseNotMatchWithTeacher(String dept) throws Exception{
 		
+		dept=dept+"%";
 		Transaction transaction=null;
 		try(Session session=Hibernate.getSessionFactory().openSession())
 		{
@@ -83,7 +101,7 @@ public List<Course> getCourseNotMatchWithTeacher(String id) throws Exception{
 			transaction=session.beginTransaction();
 			
 //			List<Course> courses=session.createQuery("select c from Course c where c.id not in (select c2.id from Course c2 where c2.teacher.id=:id)").setParameter("id", id).list();
-			List<Course>courses=session.createQuery("select c from Course c where c.teacher is null").list();
+			List<Course>courses=session.createQuery("select c from Course c where c.teacher is null and c.id like :dept ").setParameter("dept", dept).list();
 			for (Course course : courses) {
 				System.out.println(course);
 			}
@@ -130,16 +148,15 @@ public void UpdateCourseTeacher(String id,Teacher teacher) throws Exception{
 		
 	}
 }
-	public void saveCourse(String name) {
+	public void saveCourse(String name,String courseId) {
 		
 		Transaction transaction=null;
 		try(Session session=Hibernate.getSessionFactory().openSession()){
 			
-			UUID uuid=UUID.randomUUID();
 			
 			transaction=session.beginTransaction();
 			
-			Course course=new Course(uuid.toString(),name,null);
+			Course course=new Course(courseId,name,null);
 			session.save(course);
 			transaction.commit();
 		}

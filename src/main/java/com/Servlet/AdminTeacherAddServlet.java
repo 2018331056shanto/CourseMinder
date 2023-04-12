@@ -37,11 +37,13 @@ public class AdminTeacherAddServlet extends HttpServlet {
 		String id=url[url.length-1];
 //		System.out.println(id);
 		CourseDao courseDao=new CourseDao();
+		TeacherDao teacherDao=new TeacherDao();
 		try {
 			
 			List<Course> courses= courseDao.getCourseByTeacher(id);
-			
-			List<Course> notCourses=courseDao.getCourseNotMatchWithTeacher(id);
+			Teacher teacher= teacherDao.getTeacherById(id);
+			System.out.println(teacher);
+			List<Course> notCourses=courseDao.getCourseNotMatchWithTeacher(teacher.getDepartment().getName());
 			request.setAttribute("notcourses", notCourses);
 			request.setAttribute("courses", courses);
 			request.setAttribute("id", id);

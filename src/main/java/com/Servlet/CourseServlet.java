@@ -65,9 +65,10 @@ public class CourseServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String course=request.getParameter("course");
+		String courseId=request.getParameter("courseid");
 		System.out.println(course);
 		CourseDao courseDao=new CourseDao();
-		courseDao.saveCourse(course);
+		courseDao.saveCourse(course,courseId);
 		
 		doGet(request, response);
 	}
