@@ -20,12 +20,12 @@ public class User {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "username",unique = true)
+    @Column(name = "username",unique = true,nullable = false)
     private String username;
     
-    @Column(name = "password")
+    @Column(name = "password",nullable = false)
     private String password;
-    @Column(name = "type")
+    @Column(name = "type",nullable = false)
     private String type;
 
 

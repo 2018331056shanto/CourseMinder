@@ -6,7 +6,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+
+import org.hibernate.exception.ConstraintViolationException;
+
+import com.Dao.UserDao;
+import com.Entity.User;
+import com.Utils.EncoderDecoder;
 
 /**
  * Servlet implementation class LoginServlet
@@ -36,11 +44,58 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("how are you brother");
-		System.out.println(request.getContextPath()+"/signup");
+		HttpSession httpSession=request.getSession();
 		
-		response.sendRedirect(request.getContextPath()+"/signup");
-//		doGet(request, response);
+		String email=request.getParameter("email");
+		String password=request.getParameter("password");
+		UserDao userDao=new UserDao();
+		
+		try {
+			
+				User user=userDao.getUser(email);
+//				System.out.println(user.getUsername());
+				EncoderDecoder decoder=new EncoderDecoder();
+				
+				boolean match=decoder.stringDecoder(password, user.getPassword());
+				if(match)
+				{
+					if(user.getType().equals("student"))
+					{
+						httpSession.setAttribute("loggedinuser", user);
+						response.sendRedirect(request.getContextPath()+"/in/student");
+						
+					}
+					else if(user.getType().equals("teacher")) {
+						httpSession.setAttribute("loggedinuser", user);
+
+						response.sendRedirect(request.getContextPath()+"/in/teacher");
+
+					}
+					else
+					{
+						httpSession.setAttribute("loggedinuser", user);
+
+						response.sendRedirect(request.getContextPath()+"/in/admin");
+
+					}
+				}
+				else
+				{
+					request.setAttribute("mismatch", "Incorrect Password");
+					doGet(request, response);
+				}
+//				doGet(request, response);
+			
+		}
+		catch (Exception e) {
+
+			System.out.println(e.getMessage());
+
+				request.setAttribute("mismatch", "User Not Found!!!");
+		        doGet(request, response);
+	    
+		}
+
 	}
 
 }

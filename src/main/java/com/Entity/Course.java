@@ -23,7 +23,7 @@ public class Course {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id")
+    @JoinColumn(name = "teacherId")
     private Teacher teacher;
 
 	public String getId() {

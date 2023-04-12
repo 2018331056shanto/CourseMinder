@@ -82,7 +82,7 @@
                  <div class="mt-4">
                    <label for="dept" class="block">Department</label>
 <select name="department" id="dept" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Choose a department</option>
+  <option >Choose a department</option>
   <option value="cse">Computer Science and Engineering</option>
   <option value="eee">Electrical and Electronics Engineering</option>
   <option value="swe">Software Engineering</option>
@@ -91,14 +91,59 @@
                 </div>
                  <div class="mt-4">
                    <label for="type" class="block">Create Account As</label>
-<select name="type" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-  <option selected>Choose a type</option>
+<select id="selectField" onchange="addInputField()" name="type" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <option >Choose a type</option>
   <option value="student">Student</option>
   <option value="teacher">Teacher</option>
 
 </select>
                 </div>
+                
+                <div id="inputContainer" class="mt-4">    
+                      <label id="label" for="dept" class="block"></label>
+                </div>
+                <script>
+      function addInputField() {
+        // get the selected option value
+        var selectedOption = document.getElementById("selectField").value;
+		
+        if(selectedOption==="student")
+        	{
+        	  var container = document.getElementById("inputContainer");
+        		
+        	  var label=document.getElementById("label")
+        	  label.innerText = "Student ID"
+
+                var newInput = document.createElement("input");
+                newInput.type = "text";
+                newInput.name = "id";
+                newInput.id = "newInput";
+                newInput.className = "w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600";
+
+       
+                container.appendChild(newInput);
+       	
+        	
+        	}
+        else
+        	{
+      	  var container = document.getElementById("inputContainer");
+
+        	  var existingInput = document.getElementById("newInput");
+        	  var label=document.getElementById("label")
+        	  label.innerText=""
+        	  
+              if (existingInput) {
+                container.removeChild(existingInput);
+                container.innerHTML("")
+              }
+        	}
+        // create a new input element
+   
+      }
+    </script>
                 <div class="mt-4">
+                
                     <label class="block">Password<label>
                             <input name="password"type="password" placeholder="Password"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
@@ -108,14 +153,14 @@
                             <input name="confpassword" type="password" placeholder="Password"
                                 class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
-                <span class="text-xs text-red-400">Password must be same!</span>
+                <span class="text-sm text-red-400"> ${mismatch }</span>
                 <div class="flex">
                     <button class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900">Create
                         Account</button>
                 </div>
                 <div class="mt-6 text-grey-dark">
                     Already have an account?
-                    <a class="text-blue-600 hover:underline" href="#">
+                    <a class="text-blue-600 hover:underline" href="/Servlet-Project/login">
                         Log in
                     </a>
                 </div>

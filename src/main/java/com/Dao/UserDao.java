@@ -1,7 +1,5 @@
 package com.Dao;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -9,6 +7,7 @@ import org.hibernate.Transaction;
 
 import com.Entity.User;
 import com.Utils.Hibernate;
+import com.mysql.cj.Query;
 
 public class UserDao {
 	
@@ -28,21 +27,24 @@ public class UserDao {
 		
 		
 	}
+	
+	
 	@Transactional
-	public List<User> getUsers(){
+	public User getUser(String email) throws Exception{
 		
-		try (Session session = Hibernate.getSessionFactory().openSession()) {
-			session.beginTransaction();
-            
-			 List<User> userList =  session.createQuery("from User").list();
-	            System.out.println("...........User data..........");
-//	            for (User temp : userList) {
-//	    System.out.println(temp);
-//	   }
-	   session.getTransaction().commit();  
-	   return userList;
+		Transaction transaction=null;
+		
+		try(Session session=Hibernate.getSessionFactory().openSession()) {
+			
+			transaction=session.beginTransaction();
+			
+			User user = (User) session.createQuery("from User where username=:email")
+                    .setParameter("email", email)
+                    .uniqueResult();
+			transaction.commit();
+			return user;
+			
 		}
-		
 	}
 
 }

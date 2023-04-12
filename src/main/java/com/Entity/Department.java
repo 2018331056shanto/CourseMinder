@@ -17,7 +17,7 @@ public class Department {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false)
     private String name;
 
 	public String getId() {

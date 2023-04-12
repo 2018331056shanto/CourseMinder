@@ -78,7 +78,9 @@
                     </div>
                 </h1>
               
-                <form action="login" method="post" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+                <form action="/Servlet-Project/login" method="post" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+                                   <span class="text-xl text-red-800"> ${mismatch }</span>
+                   
                     <div class="pb-2 pt-4">
                         <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-4 text-lg rounded-sm bg-black">
                     </div>

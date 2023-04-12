@@ -8,6 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.persistence.PersistenceException;
+
+import org.hibernate.exception.ConstraintViolationException;
+
 import com.Dao.DepartmentDao;
 import com.Dao.StudentDao;
 import com.Dao.TeacherDao;
@@ -52,51 +56,98 @@ public class SignupServlet extends HttpServlet {
 		
 		String name=request.getParameter("name");
 		String userName=request.getParameter("email");
-		String department=request.getParameter("department");
+		String department=request.getParameter("department").toUpperCase();
 		String type=request.getParameter("type");
 		String password=request.getParameter("password");
 		String confPassword=request.getParameter("confpassword");
-	
-		if(password==confPassword)
+
+		if(!password.equals(confPassword))
 		{
 		
-//			System.out.println(request.getContextPath());
-			response.sendRedirect(request.getContextPath()+"/signup");
+			request.setAttribute("mismatch", "Password Did not match");
+			
+			doGet(request,response);
 
 		}
 		else
 		{
 			EncoderDecoder encoderDecoder=new EncoderDecoder();
+			
 			String hashPass=encoderDecoder.stringEncoder(password);
+			
 			UUID uuid=UUID.randomUUID();
-			User user=new User(uuid.toString(),userName,hashPass,type);
+			
 			
 			UserDao userDao=new UserDao();
 			
 			try {
-				userDao.saveUser(user);
+				
 				UUID uuid2=UUID.randomUUID();
 				
 				Department department2=new Department(uuid2.toString(),department);
 				
 				DepartmentDao departmentDao=new DepartmentDao();
-				departmentDao.saveDepartment(department2);
-				System.out.println(type);
-				if(type.toString()=="student") {
+				
+				
+				if(type.equals("student")) {
 					
-					UUID uuid3= UUID.randomUUID();
-					Student student=new Student(uuid3.toString(),name,department2);
-					StudentDao studentDao=new StudentDao();
-					studentDao.saveStudent(student);
+					String id=request.getParameter("id");
+					
+					User user=new User(id,userName,hashPass,type);
+					try {
+						userDao.saveUser(user);
+						
+						departmentDao.saveDepartment(department2);
+
+						Student student=new Student(id,name,department2,user);
+						
+						StudentDao studentDao=new StudentDao();
+						
+						studentDao.saveStudent(student);
+						doGet(request, response);
+						
+					}
+					catch (Exception e) {
+						if (e.getCause() instanceof ConstraintViolationException) {
+					        ConstraintViolationException cve = (ConstraintViolationException) e.getCause();
+					        String errorMessage = cve.getSQLException().getMessage();
+					       
+					        String newError=errorMessage.substring(0, errorMessage.indexOf("for"));
+//					        System.out.println(newError);
+					        request.setAttribute("mismatch", newError);
+					        doGet(request, response);
+					    } 
+					}
+				
 				}
 				else
 				{
-					UUID uuid3=UUID.randomUUID();
-					Teacher teacher=new Teacher(uuid3.toString(),name,department2);
-					TeacherDao teacherDao=new TeacherDao();
-					teacherDao.saveTeacher(teacher);
+					User user=new User(uuid.toString(),userName,hashPass,type);
+					try {
+						userDao.saveUser(user);
+						departmentDao.saveDepartment(department2);
+
+						Teacher teacher=new Teacher(uuid.toString(),name,department2,user);
+						
+						TeacherDao teacherDao=new TeacherDao();
+						
+						teacherDao.saveTeacher(teacher);
+						doGet(request, response);
+
+					}
+					catch (Exception e) {
+						if (e.getCause() instanceof ConstraintViolationException) {
+					        ConstraintViolationException cve = (ConstraintViolationException) e.getCause();
+					        String errorMessage = cve.getSQLException().getMessage();
+					       
+					        String newError=errorMessage.substring(0, errorMessage.indexOf("for"));
+					        request.setAttribute("mismatch", newError);
+					        doGet(request, response);
+					    } 
+					}
+					
 				}
-				System.out.println("Everything is done");
+
 
 			}
 			catch(Exception e)
@@ -108,7 +159,7 @@ public class SignupServlet extends HttpServlet {
 		}
 
 
-		doGet(request, response);
+//		doGet(request, response);
 	}
 
 }
