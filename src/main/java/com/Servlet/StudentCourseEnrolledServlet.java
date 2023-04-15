@@ -6,28 +6,25 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.util.List;
 
 import com.Dao.CourseDao;
 import com.Dao.RegistrationDao;
-import com.Dao.StudentDao;
 import com.Entity.Course;
 import com.Entity.Student;
-import com.Entity.User;
+import com.Entity.Teacher;
 
 /**
- * Servlet implementation class StudentServlet
+ * Servlet implementation class StudentCourseEnrolledServlet
  */
-public class StudentServlet extends HttpServlet {
+public class StudentCourseEnrolledServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentServlet() {
+    public StudentCourseEnrolledServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,30 +34,28 @@ public class StudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		HttpSession session=request.getSession();
-		User user=(User)session.getAttribute("loggedinuser");
-		String studentId=user.getId();
-		String name="";
 		RegistrationDao registrationDao=new RegistrationDao();
-		StudentDao studentDao=new StudentDao();
 		CourseDao courseDao=new CourseDao();
+		String[] url=request.getRequestURI().split("/");
+		
+		String id=url[url.length-1];
+		System.out.println(id);
 		try {
 			
-			List<Course>courses=registrationDao.getRegisteredCourseByStudentId(studentId);
+			List<Student> students=registrationDao.getRegisterStudentsToACourse(id);
+			Course course=courseDao.getCourseById(id);
 			
-			Student student  =studentDao.getStudentById(studentId);
-			name=student.getName();
-			String deptName=student.getDepartment().getName();
-			
-			List<Course>courses2=courseDao.getUnenrolledCoursesByStudent(studentId, deptName);
-			request.setAttribute("courses2", courses2);
-			request.setAttribute("name",name);
-			request.setAttribute("courses", courses);
-			RequestDispatcher view=request.getRequestDispatcher("/pages/StudentPage.jsp");
+			Teacher teacher=courseDao.getCourseTeacher(id);
+		
+			request.setAttribute("students", students.size());
+			request.setAttribute("teacher", teacher.getName());
+			request.setAttribute("deptname", teacher.getDepartment().getName().toUpperCase());
+			request.setAttribute("courseName",course.getName());
+			RequestDispatcher view=request.getRequestDispatcher("/pages/StudentCourse.jsp");
 			view.forward(request, response);
 			
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}

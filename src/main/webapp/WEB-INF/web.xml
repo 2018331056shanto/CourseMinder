@@ -128,4 +128,34 @@
     <servlet-name>TeacherStudentServlet</servlet-name>
     <url-pattern>/in/teacher/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StudentCourseEnrolledServlet</display-name>
+    <servlet-name>StudentCourseEnrolledServlet</servlet-name>
+    <servlet-class>com.Servlet.StudentCourseEnrolledServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentCourseEnrolledServlet</servlet-name>
+    <url-pattern>/in/student/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StudentAddToCourseServlet</display-name>
+    <servlet-name>StudentAddToCourseServlet</servlet-name>
+    <servlet-class>com.Servlet.StudentAddToCourseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentAddToCourseServlet</servlet-name>
+    <url-pattern>/in/student/add/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.Servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

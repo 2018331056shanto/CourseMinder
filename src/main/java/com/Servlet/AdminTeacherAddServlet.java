@@ -35,7 +35,6 @@ public class AdminTeacherAddServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String[] url=request.getRequestURI().split("/");
 		String id=url[url.length-1];
-//		System.out.println(id);
 		CourseDao courseDao=new CourseDao();
 		TeacherDao teacherDao=new TeacherDao();
 		try {
@@ -71,7 +70,6 @@ public class AdminTeacherAddServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-//		response.getWriter().append("Served at admin : ").append(request.getContextPath());
 	}
 
 	/**
@@ -84,7 +82,6 @@ public class AdminTeacherAddServlet extends HttpServlet {
 		String courseName=request.getParameter("coursename");
 		String [] courseNameId=courseName.split(":");
 		String courseId=courseNameId[1];
-//		System.out.println(courseName +" : ");
 		TeacherDao teacherDao=new TeacherDao();
 		CourseDao courseDao=new CourseDao();
 		try {

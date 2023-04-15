@@ -53,7 +53,6 @@ public class LoginServlet extends HttpServlet {
 		try {
 			
 				User user=userDao.getUser(email);
-//				System.out.println(user.getUsername());
 				EncoderDecoder decoder=new EncoderDecoder();
 				
 				boolean match=decoder.stringDecoder(password, user.getPassword());
@@ -84,7 +83,6 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("mismatch", "Incorrect Password");
 					doGet(request, response);
 				}
-//				doGet(request, response);
 			
 		}
 		catch (Exception e) {

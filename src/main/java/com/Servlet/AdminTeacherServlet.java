@@ -45,7 +45,6 @@ public class AdminTeacherServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

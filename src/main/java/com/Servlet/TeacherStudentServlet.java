@@ -53,7 +53,6 @@ public class TeacherStudentServlet extends HttpServlet {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

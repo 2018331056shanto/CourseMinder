@@ -53,6 +53,25 @@ public class StudentDao {
 		}
 		
 	}
+	public Student getStudentById(String id) throws Exception{
+		
+Transaction transaction=null;
+		
+		try(Session session=Hibernate.getSessionFactory().openSession())
+		{
+			
+			transaction=session.beginTransaction();
+			
+			Student student=(Student)session.createQuery("select c from Student c where c.id=:id").setParameter("id", id).uniqueResult();
+			
+			
+			transaction.commit();
+			
+			return student;
+		}
+		
+	}
+	
 	
 
 }

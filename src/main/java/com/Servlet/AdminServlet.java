@@ -47,7 +47,6 @@ public class AdminServlet extends HttpServlet {
 			List<Teacher> lisTeachers=teacherDao.getTeachers();
 			List<Student> lisStudents=studentDao.getStudents(); 
 			Course course= registrationDao.getHighestTakenCourse();
-//			String s=courseDao.course("abc");
 			request.setAttribute("totalcourse", list.size());
 			request.setAttribute("totalteacher", lisTeachers.size());
 			request.setAttribute("totalstudent", lisStudents.size());
@@ -65,7 +64,6 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 		
-//		response.getWriter().append("Served at: admin ").append(request.getContextPath());
 	}
 
 	/**

@@ -38,11 +38,9 @@ public class CourseEnrollmentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		RegistrationDao registrationDao=new RegistrationDao();
 		CourseDao courseDao=new CourseDao();
-//		DepartmentDao departmentDao=new DepartmentDao();
 		String[] url=request.getRequestURI().split("/");
 		
 		String id=url[url.length-1];
@@ -53,8 +51,7 @@ public class CourseEnrollmentServlet extends HttpServlet {
 			Course course=courseDao.getCourseById(id);
 			
 			Teacher teacher=courseDao.getCourseTeacher(id);
-		
-//			String departmentName=departmentDao.getDeptName(teacher.getDepartment());
+	
 			request.setAttribute("students", students);
 			request.setAttribute("teacher", teacher.getName());
 			request.setAttribute("deptname", teacher.getDepartment().getName().toUpperCase());

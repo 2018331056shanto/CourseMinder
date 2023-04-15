@@ -46,14 +46,8 @@ public class AuthorizeFileter extends HttpFilter implements Filter {
 		HttpServletRequest request2=(HttpServletRequest)request;
 		HttpServletResponse response2=(HttpServletResponse)response;
 		String [] url=request2.getRequestURI().split("/");
-		
-//		System.out.println(url);
-//		for (String string : url) {
-//			System.out.println(string);
-//		}
-//		System.out.println("i am in filter");
+
 		HttpSession session=request2.getSession(false);
-//		System.out.println(session);
 		if(session==null||session.getAttribute("loggedinuser")==null)
 		{
 			response2.sendRedirect(request2.getContextPath()+"/login");
@@ -78,8 +72,9 @@ public class AuthorizeFileter extends HttpFilter implements Filter {
 				}
 			}
 			catch (Exception e) {
+				e.printStackTrace();
 				chain.doFilter(request2, response2);
-
+				
 				// TODO: handle exception
 			}
 			

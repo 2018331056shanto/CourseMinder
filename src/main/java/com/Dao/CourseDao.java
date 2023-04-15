@@ -47,7 +47,7 @@ public class CourseDao {
 			
 			
 			transaction=session.beginTransaction();
-			Teacher teacher=(Teacher)session.createQuery("select c.teacher from Course c where c.id = :id").setParameter("id", id).uniqueResult();
+			Teacher teacher=(Teacher)session.createQuery("select c.teacher from Course c where c.id = :id and c.teacher is not null").setParameter("id", id).uniqueResult();
 
 			transaction.commit();
 			return teacher; 
@@ -107,9 +107,7 @@ public List<Course> getCourseNotMatchWithTeacher(String dept) throws Exception{
 			}
 			transaction.commit();
 			
-		for (Course course : courses) {
-			System.out.println(course);
-		}
+
 			return courses; 
 			
 		}
@@ -125,26 +123,13 @@ public void UpdateCourseTeacher(String id,Teacher teacher) throws Exception{
 		transaction=session.beginTransaction();
 		
 		Course course=(Course)session.createQuery("select c from Course c where c.id=:id").setParameter("id", id).uniqueResult();
-		System.out.println(course);
-		System.out.println(teacher);
-//		if(course.getTeacher()!=null)
-//		{
-//			
-//			Course course2=new Course(id,course.getName(),teacher);
-//			session.save(course2);
-//		}
-//		else
-//		{
-//			System.out.println("hello");
 
 			Query query = session.createQuery("update Course c set c.teacher = :teacher where c.id = :id");
 			query.setParameter("teacher", teacher);
 			query.setParameter("id", id);
 			int result = query.executeUpdate();
 			
-			System.out.println(result);
-//		}
-		transaction.commit();
+			transaction.commit();
 		
 	}
 }
@@ -170,4 +155,23 @@ public void UpdateCourseTeacher(String id,Teacher teacher) throws Exception{
 		}
 	}
 
+	public List<Course> getUnenrolledCoursesByStudent(String id,String dept) throws Exception{
+		
+		Transaction transaction=null;
+		
+		try(Session session=Hibernate.getSessionFactory().openSession()){
+			
+			transaction=session.beginTransaction();
+			
+			dept=dept+"%";
+			System.out.println(id+" : "+dept);
+			List<Course>courses=session.createQuery("from Course c where c.id not in (select r.course.id from Registration r where r.student.id=:id) and c.id like : dept ").setParameter("id", id).setParameter("dept", dept).list();
+			
+			for (Course course : courses) {
+				System.out.println(course);
+			}
+			return courses;
+		}
+		
+	}
 }

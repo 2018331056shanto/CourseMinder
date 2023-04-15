@@ -38,6 +38,18 @@ public class RegistrationDao {
 		}
 	}
 	
+	public List<Course> getRegisteredCourseByStudentId(String id) throws Exception{
+		
+		Transaction transaction=null;
+		try(Session session=Hibernate.getSessionFactory().openSession()){
+			
+			transaction=session.beginTransaction();
+			List<Course> courses=session.createQuery("select c.course from Registration c where c.student.id=:id").setParameter("id", id).list();
+
+			transaction.commit();
+			return courses;
+		}
+	}
 	public List<Student> getRegisterStudentsToACourse(String id)throws Exception
 	{
 		
@@ -81,6 +93,25 @@ public class RegistrationDao {
 		}
 
 
+	}
+	public void registerStudentToaCourse(Registration registration)
+	{
+		Transaction transaction=null;
+		try(Session session=Hibernate.getSessionFactory().openSession())
+		{
+			transaction=session.beginTransaction();
+			session.save(registration);
+			transaction.commit();
+			
+		}
+		catch(Exception e)
+		{
+			if(transaction!=null) {
+				
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 }

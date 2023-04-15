@@ -23,8 +23,6 @@ public class Hibernate {
 		  if (sessionFactory == null) {
 		   try {
 		    Configuration configuration = new Configuration();
-//		    System.out.println("is this work");
-		    // Hibernate settings equivalent to hibernate.cfg.xml's properties
 		    Properties settings = new Properties();
 		    settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
 		    settings.put(Environment.URL, "jdbc:mysql://localhost:3306/servlet_project?useSSL=false");
@@ -37,11 +35,8 @@ public class Hibernate {
 		    settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
 		    settings.put(Environment.HBM2DDL_AUTO, "update");
-//		    settings.put(Environment.USE_SECOND_LEVEL_CACHE,"true");
 		    settings.put(Environment.CACHE_REGION_FACTORY,"org.hibernate.cache.ehcache.EhCacheRegionFactory");
 		    System.out.println("dhaldhsld");
-//		    settings.put(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.ehcache.internal.EhcacheRegionFactory");
-//		    settings.put(Environment.cache, settings)u
 		    configuration.setProperties(settings);
 		    configuration.addAnnotatedClass(User.class);
 		    configuration.addAnnotatedClass(Course.class);
@@ -52,11 +47,9 @@ public class Hibernate {
 
 		    
 		    
-//		    configuration.addAnnotatedClass(Demo.class);
 
 		    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		    System.out.println("dhaldhsld422");
 
 		    return sessionFactory;
 

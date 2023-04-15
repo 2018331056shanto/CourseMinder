@@ -113,7 +113,6 @@ public class SignupServlet extends HttpServlet {
 					        String errorMessage = cve.getSQLException().getMessage();
 					       
 					        String newError=errorMessage.substring(0, errorMessage.indexOf("for"));
-//					        System.out.println(newError);
 					        request.setAttribute("mismatch", newError);
 					        doGet(request, response);
 					    } 
@@ -159,7 +158,6 @@ public class SignupServlet extends HttpServlet {
 		}
 
 
-//		doGet(request, response);
 	}
 
 }
