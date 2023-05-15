@@ -53,13 +53,12 @@
         data-te-navbar-nav-ref>
         <!-- Home link -->
         <li class="lg:px-2" data-te-nav-item-ref>
-          <a
+      <a
             class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
             aria-current="page"
-            href="/Servlet-Project/in/teacher"
+            href="/Servlet-Project/in/student"
             data-te-nav-link-ref
-            >Home</a
-          >
+            >Home</a>
         </li>
         
       </ul>

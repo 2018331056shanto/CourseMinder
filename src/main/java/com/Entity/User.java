@@ -11,7 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+//This table has hold the infromation about an user 
+//the type of an user and others information like
+//name, username,password and the type of user
 @Entity
 @Table(name = "user")
 public class User {

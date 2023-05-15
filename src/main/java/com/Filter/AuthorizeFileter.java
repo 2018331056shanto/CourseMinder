@@ -19,6 +19,8 @@ import com.Entity.User;
 /**
  * Servlet Filter implementation class AuthorizeFileter
  */
+//this class is used for check if an user after authenticated
+//has been authorized properly
 @WebFilter("/in/*")
 public class AuthorizeFileter extends HttpFilter implements Filter {
        

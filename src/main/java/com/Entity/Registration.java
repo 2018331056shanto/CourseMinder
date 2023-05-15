@@ -11,19 +11,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+//This table has Three columns. Primary key, Students
+//and Teachers. This table has two many to one Relationship
+//one with Student and another with Course. Thi table
+//holds the information about students who has enrolled in 
+//any of these course
+
+//This annotation means this class represents a model class
 @Entity
+//this annotaion defines the name of the Table
 	@Table(name = "registration")
 	public class Registration {
-
+//This annotaion determines the Primary key in the table
 	    @Id
+//This annotaion determines the name of the column
 	    @Column(name = "id")
 	    private String id;
-
+//This annotation determines that this table has Many to One
+//relationship with the specific table name Course
 	    @ManyToOne
+//This annotation make a foreign key in this table and name of that column is studentId	    
 	    @JoinColumn(name = "studentId")
 	    private Student student;
-
+//This annotation determines that this table has Many to One
+//relationship with the specific table name Course
 	    @ManyToOne
+//This annotation make a foreign key in this table and name of that column is coureseId    
+
 	    @JoinColumn(name = "courseId")
 	    private Course course;
 

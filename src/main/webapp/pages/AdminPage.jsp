@@ -6,6 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -40,14 +43,14 @@
 
     <!-- Collapsible navbar container -->
     <div
-      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+      class="!visible hidden basis-[100%] px-16 w-full flex items-center justify-between lg:!flex lg:basis-auto"
       id="navbarSupportedContent3"
       data-te-collapse-item>
       <!-- Navbar title -->
-      <a class="text-xl text-black" href="/Servlet-Project/in/admin">Course-Management</a>
+      <a class="text-2xl text-black" href="/Servlet-Project/in/admin" style="font-family: Lobster">Course-Management</a>
       <!-- Left links -->
       <ul
-        class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
+        class="list-style-none flex flex-col pl-0 lg:flex-row"
         data-te-navbar-nav-ref>
         <!-- Home link -->
         <li class="lg:px-2" data-te-nav-item-ref>
@@ -92,72 +95,88 @@
             ></a
           >
         </li>
-      </ul>
-       <ul class="list-style-none ml-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref>
-        <!-- Logout link -->
-        <li class="lg:px-2" data-te-nav-item-ref>
+        <li class="" data-te-nav-item-ref>
           <form method="post" action="/Servlet-Project/logout">
             <button class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400" type="submit">Logout</button>
           </form>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
 
-<div class="container mx-auto px-20">
-<div class="flex flex-col w-full" style="cursor: auto;">
-  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-    <div class="metric-card bg-white text-2xl dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      Total Courses
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;"> ${totalcourse} </p>
-    </div>
-    <div class="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      <a aria-label="Unsplash Views" target="_blank" rel="noopener noreferrer" >
-        <div class="flex text-2xl items-center text-gray-900 dark:text-gray-100" style="cursor: auto;">Total Teachers
-         
+
+
+    <div class="w-full flex justify-center items-center mt-32">
+        <div class="w-[80%] grid grid-cols-3 gap-10">
+
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">${totalstudent}</span>
+                    <span class="block text-gray-500">Students</span>
+                </div>
+            </div>
+
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
+                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">${totalteacher}</span>
+                    <span class="block text-gray-500">Teachers</span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+                <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-orange-100 rounded-full mr-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-2xl font-bold">${totalcourse}</span>
+                    <span class="block text-gray-500">Total Courses</span>
+                </div>
+            </div>
         </div>
-      </a>
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">  ${totalteacher} </p>
-    </div>
-  </div>
-  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-    <div class="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      <a aria-label="YouTube Subscribers" target="_blank" rel="noopener noreferrer">
-        <div class="flex text-2xl items-center text-gray-900 dark:text-gray-100" style="cursor: auto;">Total Students
-         
-        </div>
-      </a>
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">  ${totalstudent} </p>
-    </div>
-    <div class="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      <a aria-label="YouTube Views" target="_blank" rel="noopener noreferrer" >
-        <div class="flex text-2xl items-center text-gray-900 dark:text-gray-100">Highest Taken Course
-         
-        </div>
-      </a>
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;"> ${highest} </p>
-    </div>
-    <div class="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      <a aria-label="YouTube Views" target="_blank" rel="noopener noreferrer" >
-        <div class="flex text-2xl items-center text-gray-900 dark:text-gray-500">Most Favorite Teacher
-         
-        </div>
-      </a>
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">  ${bestteacher} </p>
-    </div>
-    <div class="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">
-      <a aria-label="YouTube Views" target="_blank" rel="noopener noreferrer" >
-        <div class="flex text-2xl items-center text-gray-900 dark:text-gray-100">Newest Course
-         
-        </div>
-      </a>
-      <p class="mt-2 text-2xl font-bold spacing-sm text-black dark:text-white" style="cursor: auto;">5</p>
     </div>
     
-  </div>
-</div>
-</div>
+        <div class="w-full flex justify-center items-center mt-10">
+        <div class="w-[80%] grid grid-cols-3 gap-10">
+
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+
+                <div>
+                <span class="block text-gray-900 text-xl">Highest taken Course</span>
+                    <span class="block text-lg text-gray-500 font-bold">${highest}</span>
+                    
+                </div>
+            </div>
+
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+
+                <div>
+                  <span class="block text-gray-900 text-xl">Popular Teacher</span>
+                    <span class="block text-lg text-gray-500 font-bold">${bestteacher}</span>
+                </div>
+            </div>
+            <div class="flex items-center p-8 bg-white border-2 shadow-sm rounded-lg">
+
+                <div>
+                  <span class="block text-gray-900 text-xl">Current running courses</span>
+                    <span class="block text-lg text-gray-500 font-bold">${totalcourse}</span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

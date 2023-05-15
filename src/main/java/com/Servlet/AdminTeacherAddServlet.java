@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.Dao.CourseDao;
@@ -41,11 +42,22 @@ public class AdminTeacherAddServlet extends HttpServlet {
 			
 			List<Course> courses= courseDao.getCourseByTeacher(id);
 			Teacher teacher= teacherDao.getTeacherById(id);
-			System.out.println(teacher);
+//			System.out.println(teacher);
+			ArrayList<Long> studentsCounts=teacherDao.getStudentsByTeacherId(id);
+			int studentcnt=studentsCounts.size();
+			if(courses.size()!=studentsCounts.size())
+			{
+				for(int i=0;i<courses.size()-studentcnt;i++)
+				{
+					studentsCounts.add(0L);
+				}
+			}
+
 			List<Course> notCourses=courseDao.getCourseNotMatchWithTeacher(teacher.getDepartment().getName());
 			request.setAttribute("notcourses", notCourses);
 			request.setAttribute("courses", courses);
 			request.setAttribute("id", id);
+			request.setAttribute("enroll", studentsCounts);
 			if(courses.size()!=0)
 			{
 				for (Course course : courses) {
@@ -61,6 +73,7 @@ public class AdminTeacherAddServlet extends HttpServlet {
 				request.setAttribute("name", "No Courses Assigned Yet");
 
 			}
+			
 			RequestDispatcher view=request.getRequestDispatcher("/pages/AdminTeacherAssign.jsp");
 			view.forward(request, response);
 			
@@ -87,6 +100,7 @@ public class AdminTeacherAddServlet extends HttpServlet {
 		try {
 			Teacher teacher=teacherDao.getTeacherById(id);
 			courseDao.UpdateCourseTeacher(courseId, teacher);
+			
 			
 			
 		}

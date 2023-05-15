@@ -1,6 +1,9 @@
 package com.Dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -70,6 +73,27 @@ Transaction transaction=null;
 			return teacher;
 		}
 		
+	}
+	
+public ArrayList<Long> getStudentsByTeacherId(String teacherId) throws Exception{
+		
+		Transaction transaction=null;
+		ArrayList<Long> studentCounts=new ArrayList<>();
+		
+		
+		try(Session session=Hibernate.getSessionFactory().openSession()){
+			
+			transaction=session.beginTransaction();
+			Query<Object[]> query=session.createQuery("SELECT COUNT(r.id), r.course.id FROM Registration r WHERE r.course.id IN (SELECT c.id FROM Course c WHERE c.teacher.id = :teacherId) GROUP BY r.course.id").setParameter("teacherId",teacherId);
+			List<Object[]> registrations=query.list();
+			for (Object[] objects : registrations) {
+				
+				
+				studentCounts.add((Long) objects[0]);
+
+			}
+			return studentCounts;
+		}
 	}
 	
 

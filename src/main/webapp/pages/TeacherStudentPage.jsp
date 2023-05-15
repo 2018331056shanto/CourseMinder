@@ -76,7 +76,10 @@
 </nav>
 <div class="w-full flex justify-center mt-10 tracking-widest font-mono font-semibold text-2xl">
 
-<div>List Of Students in <span>${courseName }</span> </div>
+ <div class="w-full flex flex-col justify-center items-center mt-4">
+ <span class="font-serif font-bold text-2xl ">List Of Students in <span>${courseName }</span></span>
+ <div class="h-1 w-[250px] bg-black"></div>
+</div>
 </div>
 
 <div class="metric-card bg-white text-2xl dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full" style="cursor: auto;">

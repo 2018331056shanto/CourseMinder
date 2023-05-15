@@ -1,3 +1,4 @@
+//The code is defined within the com.Entity package.
 package com.Entity;
 
 import java.util.Objects;
@@ -12,10 +13,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+//The @Table annotation specifies the name of the table
+//in the database that corresponds to this entity (in this case, "course").
 @Table(name = "course")
+
+//This Entity class has Three field. Each field represents
+// a column in a Table. This table has one-to-many relationship 
+//with teacher table. It stores the information about Course name and 
+//the teachers associated with each course
 public class Course {
 
+//	The @Id annotation specifies that the id field is the primary key for the entity
     @Id
+//    The @Column annotation specifies the column name in the database table.
     @Column(name = "id")
     private String id;
 

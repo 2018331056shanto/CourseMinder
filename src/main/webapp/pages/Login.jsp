@@ -6,12 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
 </head>
 <body>
 <div>
 
-<nav class="bg-gray-800 fixed w-full z-10">
+<nav class="bg-white shadow-md fixed w-full z-10">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -27,16 +30,16 @@
           </svg>
         </button>
       </div>
-      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+      <div class="flex items-center justify-between w-full ">
         <div class="flex-shrink-0">
-          <a href="/" class="text-white font-bold text-xl">Course-Management</a>
+             <a class="text-2xl text-black" href="/Servlet-Project/in/admin" style="font-family: Lobster">Course-Management</a>
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/Servlet-Project/login" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="/Servlet-Project/login" class="text-black text-lg text-bold px-3 py-2 rounded-md text-sm font-medium">Login</a>
 
-            <a href="/Servlet-Project/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Signup</a>
+            <a href="/Servlet-Project/signup" class="text-black px-3 py-2 rounded-md text-sm font-medium">Signup</a>
           </div>
         </div>
       </div>
@@ -47,34 +50,23 @@
   <div class="sm:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/Servlet-Project/login" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Login</a>
+      <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Login</a>
 
-      <a href="/Servlet-Project/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white block 
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block 
       px-3 py-2 rounded-md text-base font-medium">Signup</a>
 </div>
 
   </div>
 </nav>
-
-    <section class="min-h-screen flex items-stretch text-white ">
-        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);">
-            <div class="absolute bg-black opacity-30 inset-0 z-0"></div>
-            <div class="w-full px-24 z-10">
-                
-                <p class="text-2xl my-4">Manage your courses with ease using our intuitive course management system.</p>
-            </div>
-
-            <div class="bottom-0 absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
-            </div>
-        </div>
-        <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
-            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZWR1Y2F0aW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60);">
-                <div class="absolute bg-black opacity-30 inset-0 z-0"></div>
-            </div>
+    <section class="min-h-screen flex justify-center text-white ">
+    <div class="flex justify-center items-center">
+    <img src="https://t3.ftcdn.net/jpg/03/39/70/90/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg">
+    </div>
+            <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0">
             <div class="w-full py-6 z-20">
                 <h1 class="my-6">
                     <div class="w-auto h-7 sm:h-8 inline-flex">
-                      <p class="text-2xl italic font-bold" style="letter-spacing:4px">Sign in to your account</p>
+                      <p class="text-2xl text-black font-bold" style="letter-spacing:2px">Sign in to your account</p>
                     </div>
                 </h1>
               
@@ -82,10 +74,10 @@
                                    <span class="text-xl text-red-800"> ${mismatch }</span>
                    
                     <div class="pb-2 pt-4">
-                        <input type="email" name="email" id="email" placeholder="Email" class="block w-full p-4 text-lg rounded-sm bg-black">
+                        <input type="email" name="email" id="email" placeholder="Email" class="block outline-none w-full p-4 text-lg text-black rounded-sm border-2 border-gray-300 focus:border-gray-400">
                     </div>
                     <div class="pb-2 pt-4">
-                        <input class="block w-full p-4 text-lg rounded-sm bg-black" type="password" name="password" id="password" placeholder="Password">
+                        <input class="block outline-none w-full p-4 text-lg text-black rounded-sm border-2 border-gray-300 focus:border-gray-400" type="password" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="flex gap-24">
                        <div class="text-left text-gray-400 hover:underline hover:text-gray-100">

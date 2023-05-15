@@ -4,14 +4,21 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
+//This class contains the table which has 4 column
+// It has many to one relationship with Department and
+// It has one to one relationship with User table 
+//The column that stores the foreign key of Department is 
+//departmentId and the column that stores the foreign key of 
+// User table is userId
+//This table contains the information about the teacher and
+//in which department he is in 
 @Entity
 @Table(name = "teacher")
 public class Teacher {

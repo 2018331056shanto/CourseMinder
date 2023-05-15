@@ -50,8 +50,12 @@ public class AdminServlet extends HttpServlet {
 			request.setAttribute("totalcourse", list.size());
 			request.setAttribute("totalteacher", lisTeachers.size());
 			request.setAttribute("totalstudent", lisStudents.size());
-			request.setAttribute("highest", course.getName().toUpperCase());
-			request.setAttribute("bestteacher", course.getTeacher().getName());
+			if(course!=null)
+			{
+				request.setAttribute("highest", course.getName().toUpperCase());
+				request.setAttribute("bestteacher", course.getTeacher().getName());
+			}
+			
 
 
 			RequestDispatcher dispatcher=request.getRequestDispatcher("/pages/AdminPage.jsp");

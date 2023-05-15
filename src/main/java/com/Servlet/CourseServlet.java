@@ -41,6 +41,7 @@ public class CourseServlet extends HttpServlet {
 			
 			Map<Course,Long> registrations=registrationDao.getRegistration();
 			List<Course> courses=courseDao.getCourses();
+			System.out.println(registrations);
 			request.setAttribute("courses", courses);
 			request.setAttribute("map", registrations);
 			RequestDispatcher view =request.getRequestDispatcher("/pages/AdminCourse.jsp");

@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="bg-gray-800 fixed w-full z-10">
+<nav class="bg-white shadow-md fixed w-full z-10">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -25,16 +27,16 @@
           </svg>
         </button>
       </div>
-      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+      <div class="flex items-center justify-between w-full ">
         <div class="flex-shrink-0">
-          <a href="/" class="text-white font-bold text-xl">Course-Management</a>
+             <a class="text-2xl text-black" href="/Servlet-Project/in/admin" style="font-family: Lobster">Course-Management</a>
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/Servlet-Project/login" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="/Servlet-Project/login" class="text-black text-lg text-bold px-3 py-2 rounded-md text-sm font-medium">Login</a>
 
-            <a href="/Servlet-Project/signup" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Signup</a>
+            <a href="/Servlet-Project/signup" class="text-black px-3 py-2 rounded-md text-sm font-medium">Signup</a>
           </div>
         </div>
       </div>
@@ -54,8 +56,11 @@
   </div>
 </nav>
 
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
+<div class="flex items-center justify-center min-h-screen">
+   <div class="flex justify-center items-center">
+    <img src="https://st.depositphotos.com/18722762/51522/v/450/depositphotos_515228796-stock-illustration-online-registration-sign-login-account.jpg">
+    </div>
+    <div class="px-8 py-3 mx-4 mt-16 text-left md:w-1/3 lg:w-1/3 sm:w-1/3">
         <div class="flex justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-600" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">

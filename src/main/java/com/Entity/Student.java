@@ -12,6 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+//This class represents a table which has 4 columns
+//It has relation of Many to one with department and the
+//the column that stores the foreign key is departmentId
+//This table also has one to one relation with The user table
+//The column that stores the foreign key is userId
+//This table contains the information about the student and
+//the department in which he in
 @Entity
 @Table(name = "student")
 public class Student {

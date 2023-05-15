@@ -9,11 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//This table has Two column. Department name 
+// and  id. This table contains the infromation
+//about the department name and the id associated 
+//with it
 @Entity
+// Determines  Name of the table 
 @Table(name = "department")
 public class Department {
-
+// Its for primary key in Department Table
     @Id
+//    each column attribute specify the name of a column
     @Column(name = "id")
     private String id;
 

@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -41,19 +44,19 @@
 
     <!-- Collapsible navbar container -->
     <div
-      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+      class="!visible hidden basis-[100%] px-16 w-full flex items-center justify-between lg:!flex lg:basis-auto"
       id="navbarSupportedContent3"
       data-te-collapse-item>
       <!-- Navbar title -->
-      <a class="text-xl text-black" href="/Servlet-Project/in/admin">Course-Management</a>
+      <a class="text-2xl text-black" href="/Servlet-Project/in/admin" style="font-family: Lobster">Course-Management</a>
       <!-- Left links -->
       <ul
-        class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
+        class="list-style-none flex flex-col pl-0 lg:flex-row"
         data-te-navbar-nav-ref>
         <!-- Home link -->
         <li class="lg:px-2" data-te-nav-item-ref>
           <a
-            class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+            class="disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
             aria-current="page"
             href="/Servlet-Project/in/admin"
             data-te-nav-link-ref
@@ -72,7 +75,7 @@
         <!-- Pricing link -->
         <li class="lg:pr-2" data-te-nav-item-ref>
           <a
-            class="p-0 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+            class="active p-0 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
             href="/Servlet-Project/in/admin/teacher"
             data-te-nav-link-ref
             >Teachers</a
@@ -93,15 +96,13 @@
             ></a
           >
         </li>
-      </ul>
-       <ul class="list-style-none ml-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref>
-        <!-- Logout link -->
-        <li class="lg:px-2" data-te-nav-item-ref>
+        <li class="" data-te-nav-item-ref>
           <form method="post" action="/Servlet-Project/logout">
             <button class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400" type="submit">Logout</button>
           </form>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
