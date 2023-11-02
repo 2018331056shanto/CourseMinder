@@ -57,7 +57,7 @@ The tech stack includes Java, Servlet, JSP, MySQL, Maven, JSTL providing a robus
 ---
 ## How to run project
 1. Clone this repository into your local machine.
-2. Now open it in Eclipse IDE and run it on server.
+2. Now open it in Eclipse IDE and run it on tomcat server.
 
 
 
