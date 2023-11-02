@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ea9e84f-41fd-4551-8d83-7c835ea3a926" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/AdminCourse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/AdminCourse.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/AdminPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/AdminPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/AdminStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/AdminStudent.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/AdminTeacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/AdminTeacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/Signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/Signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +25,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2NjUqNAGGNPZC1If002RTf1lOOU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -153,6 +149,7 @@
       <workItem from="1683380438921" duration="321000" />
       <workItem from="1683380835823" duration="313000" />
       <workItem from="1683554955263" duration="225000" />
+      <workItem from="1698957290376" duration="16000" />
     </task>
     <servers />
   </component>
