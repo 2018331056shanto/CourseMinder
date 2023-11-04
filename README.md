@@ -3,9 +3,9 @@
 ### Table of content :
 - [Description](#description)
 - [Features](#features)
-- [Technologies](#technologies)
-- [How to run project](#runproject)
 - [Overview](#overview)
+- [Technologies](#technologies)
+- [How to run project](#how-to-run-project)
 
 ---
 
@@ -31,15 +31,6 @@ The tech stack includes Java, Servlet, JSP, MySQL, Maven, JSTL providing a robus
 
 ---
 
-## Technologies
-- Java
-- Servlet
-- JSP
-- MySQL
-- Maven
-- JSTL
-
----
 
 ## Overview
 
@@ -54,6 +45,17 @@ The tech stack includes Java, Servlet, JSP, MySQL, Maven, JSTL providing a robus
 <img src="sample-image/Screenshot from 2023-11-03 02-49-26.png">
 <img src="sample-image/Screenshot from 2023-11-03 02-49-44.png">
 
+---
+
+## Technologies
+```js
+- Java
+- Servlet
+- JSP
+- MySQL
+- Maven
+- JSTL
+``` 
 ---
 ## How to run project
 1. Clone this repository into your local machine.
